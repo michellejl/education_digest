@@ -11,11 +11,16 @@
 
     <title>Education Digest</title>
 
+    <!-- Searchbar CSS -->
+    <link rel="stylesheet" href="css/searchBar.css">
+
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="css/one-page.css" rel="stylesheet">
+
+
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,6 +32,16 @@
 </head>
 
 <body>
+
+    <!-- HTML for the search bar -->
+    <div id="tfheader">
+      <form id="tfnewsearch" method="get" action="http://gifly.com/">
+          <input type="text" class="tftextinput" name="q" size="21" maxlength="120"><input type="submit" value="search" class="tfbutton">
+      </form>
+    <div class="tfclear"></div>
+    </div>
+
+
 
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
