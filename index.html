@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Education Digest</title>
-</head>
-<body>
-	<div class="giphySpot"> </div>
-</body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="js/api/giphy.js"></script>
-
-<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,8 +57,20 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                </ul>
+                    <ul class="nav nav-bar  navbar-right">
+                        <li role="presentation" class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                                Demo Topics <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="brain.html">Anatomy of the Brain</a></li>
+                                <li><a href="gracehopper.html">Grace Hopper</a></li>
+                                <li><a href="inertgases.html">Inert Gases</a></li>
+                                <li><a href="milesdavis.html">Miles Davis</a></li>
+                                <li><a href="pdxbridges.html">Bridges of Portland</a></li>
+                            </ul>
+                        </li>
+                    </ul>
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -88,16 +90,11 @@
     <!-- Page Content -->
     <div class="container">
 
-
+	<div class="giphySpot"> GIF HERE </div>
+    
         
-        
-        
-        
-        
-        
-        
-        
-        
+              
+    
         
 
         <!-- Footer -->
@@ -117,8 +114,9 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/giphy.js"></script>
 
 </body>
 
 </html>
-
