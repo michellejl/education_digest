@@ -35,7 +35,7 @@
 
     <!-- HTML for the search bar -->
     <div id="tfheader">
-      <form id="tfnewsearch" method="get" action="http://gifly.com/">
+      <form id="tfnewsearch" method="get" ng-submit="redirect(search)">
           <input type="text" class="tftextinput" id="tfq2b" name="q" size="21" maxlength="120" value="Search our website"><input type="submit" value="search" class="tfbutton">
       </form>
     <div class="tfclear"></div>
@@ -108,6 +108,7 @@
 
     <!-- jQuery Searchbar behavior -->
     <script src="js/searchbar.js"></script>
+    <script src="js/redirectSearch.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
