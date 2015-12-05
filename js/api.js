@@ -55,6 +55,7 @@ $.ajax({
 .done(function(data) {
 	var wordList = search.split(" ");
 	var searchTerms = [];
+	searchTerms.push(search);
 	console.log("success");
 	var keywords = data.keywords;
 	keywords.filter(function(obj, index) {
