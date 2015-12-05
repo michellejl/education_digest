@@ -9,6 +9,7 @@ var searchMod = search.replace(" ", "_");
 var keywordUrl = "http://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords"
 var wikiUrl = "https://en.wikipedia.org/wiki/" + searchMod;
 var debugging = false;
+var searchTerms;
 
 //call to wikipedia to get page content
 $.ajax({
@@ -32,10 +33,11 @@ $.ajax({
 	})[0].extract;
 	debug(pageHTML);
 	var firstParagraph = pageHTML.slice(0,pageHTML.indexOf("</p>") + 4);
-	$('#output').append($(firstParagraph))
+	$('#about .featurette-heading').html(search)
+	$('#about .lead').html(firstParagraph);
 }).fail(function() {
 	console.log("error");
-})
+});
 
 
 
@@ -52,7 +54,7 @@ $.ajax({
 })
 .done(function(data) {
 	var wordList = search.split(" ");
-	var newTerms = [];
+	var searchTerms = [];
 	console.log("success");
 	var keywords = data.keywords;
 	keywords.filter(function(obj, index) {
@@ -69,7 +71,7 @@ $.ajax({
 		}
 		if(!match) {
 			var wordsToAdd = obj.text.split(" ")
-			newTerms.push(obj.text);
+			searchTerms.push(obj.text);
 
 			for(var i=0;i<wordsToAdd.length;i++) {
 				wordList.push(wordsToAdd[i]);
@@ -77,12 +79,8 @@ $.ajax({
 			debug(wordList);
 		}
 	})
-	console.log(newTerms);
+	console.log(searchTerms);
 
-})
-.fail(function() {
+}).fail(function() {
 	console.log("error");
-})
-.always(function() {
-	console.log("complete");
 });
