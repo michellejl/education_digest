@@ -11,6 +11,7 @@
     padding: 5px 15px;
     font-family: Arial, Helvetica, sans-serif;
     font-size:14px;
+    background: #D0D0D0;
     border:1px solid #0076a3; border-right:0px;
     border-top-left-radius: 5px 5px;
     border-bottom-left-radius: 5px 5px;
@@ -35,8 +36,8 @@
   .tfbutton:hover {
     text-decoration: none;
     background: #007ead;
-    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
-    background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+    background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#400000));
+    background: -moz-linear-gradient(top,  #0095cc,  #400000);
   }
   /* Fixes submit button height problem in Firefox */
   .tfbutton::-moz-focus-inner {
