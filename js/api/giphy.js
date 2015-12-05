@@ -12,7 +12,8 @@ $.ajax({
 		//getting first gif (data is part of array for search term- fixed height)
 		gif = jsonData.data[0].images.fixed_height.url;
 		console.log(gif);
-		$(".image").innerHTML("<img src=" + gif + ">" )
+		//put gifey on page
+		$(".giphySpot").html("<img src=" + gif + ">" )
 	}
 })
 
@@ -20,7 +21,7 @@ $.ajax({
 //isolate image from data to display
 .done(function() {
 	console.log("success");
-})
+	})
 .fail(function() {
 	console.log("error");
 })
