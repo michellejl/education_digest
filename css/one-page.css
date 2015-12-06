@@ -6,6 +6,8 @@
 
 body {
     margin-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color: #eee;
+
 }
 
 
@@ -13,7 +15,7 @@ body {
     display: block;
     width: 100%;
     text-align: center;
-    background: no-repeat center center scroll;
+    background: stretch;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -21,8 +23,8 @@ body {
 }
 .header-home{ 
     background: url(../images/sky.jpg);
-
-
+    border-bottom:solid;
+    
  }
 
 .headline {
@@ -34,13 +36,15 @@ body {
     font-size: 130px;
     background: #fff;
     background: rgba(255,255,255,0.9);
-    color:skyblue;
-    border:solid;
+
+    color: skyblue;
+    border: solid;
     border-radius: 15px;
+    border-color:#DD6BA7;
 }
 
 .headline h2 {
-    font-size: 77px;
+    font-size: 2px;
     background: #fff;
     background: rgba(255,255,255,0.9);
 
@@ -131,10 +135,13 @@ footer {
 @media(max-width:768px) {
     .container 
 
-
     {
         margin: 0 15px;
         border: solid;
+    }
+
+    .headline {
+        border:none;
     }
 
     .featurette-divider {
