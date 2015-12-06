@@ -11,6 +11,7 @@ body {
 }
 
 
+
 .header-image {
     display: block;
     width: 100%;
@@ -75,6 +76,19 @@ body {
 footer {
     margin: 50px 0;
 }
+
+
+/*button style*/
+#tfheader {
+    background-color: rgba(85, 217, 255, 1);
+    text-align:center;
+    padding-top: 5%;
+    
+    float:none;
+
+
+}
+
 
 @media(max-width:1200px) {
     .headline h1 {
