@@ -200,3 +200,9 @@ footer {
         margin-left: 0;
     }
 }
+
+.keyword {
+    color:white;
+    border: 1px solid red;
+    cursor:pointer;
+}
