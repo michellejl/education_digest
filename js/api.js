@@ -14,6 +14,8 @@ var searchData = []
 
 var searchTerm;
 var searchUrl;
+var pageHTML;
+
 
 $('input').autocomplete({
   minLength: 2,
@@ -45,7 +47,7 @@ function updatePage(search) {
 	searchMod = search.replace(" ", "_");
 	keywordUrl = "http://gateway-a.watsonplatform.net/calls/url/URLGetRankedKeywords"
 	wikiUrl = "https://en.wikipedia.org/wiki/" + encodeURI(search)
-//call to wikipedia to get page content
+	//call to wikipedia to get page content
 	$.ajax({
 		url: 'https://en.wikipedia.org/w/api.php',
 		type: 'GET',
@@ -62,66 +64,87 @@ function updatePage(search) {
 
 		//pulls the html from the search results and saves it as pageHTML and firstParagraph variables
 		var pages = data.query.pages
-		var pageHTML = $.map(pages, function(value, index) {
+		pageHTML = $.map(pages, function(value, index) {
 			return [value];
 		})[0].extract;
+		var pageHTML = pageHTML.slice(0,pageHTML.indexOf('<h2>'));
 		console.log(pageHTML);
-		var firstParagraph = pageHTML.slice(0,pageHTML.indexOf("</p>") + 4);
-		$('.headline .container h1').html(search)
-		$('#about .featurette-heading').html(search)
-		$('#about .lead').html(firstParagraph);
-	}).fail(function() {
-		console.log("error");
-	});
+		// var firstParagraph = pageHTML.slice(0,pageHTML.indexOf("</p>") + 4);
+		// htmlLeft = pageHTML.slice(pageHTML.indexOf("</p>") + 4);
+		// var secondParagraph = htmlLeft.slice(0,pageHTML.indexOf("</p>") + 4);
+		// htmlLeft = htmlLeft.slice(pageHTML.indexOf("</p>") + 4);
+		// var thirdParagraph = htmlLeft.slice(0,pageHTML.indexOf("</p>") + 4);
+		$('.headline .container h1').html(search);
+		$('#about .featurette-heading').html(search);
+		$('#about .lead').html(pageHTML);
+		// $('#services .lead').html(secondParagraph);
+		// $('#contact .lead').html(thirdParagraph);
 
+		// calls the keyword api to get a list of related keywords
+		$.ajax({
+			url: keywordUrl,
+			type: 'GET',
+			dataType: 'json',
+			data: {
+				"url": wikiUrl,
+				"apikey":"0fd7fecb7d2d5c5a696b179312c6023f112956bd",
+				"outputMode":"json"
+			},
+		})
+		.done(function(data) {
 
-
-// calls the keyword api to get a list of related keywords
-	$.ajax({
-		url: keywordUrl,
-		type: 'GET',
-		dataType: 'json',
-		data: {
-			"url": wikiUrl,
-			"apikey":"0fd7fecb7d2d5c5a696b179312c6023f112956bd",
-			"outputMode":"json"
-		},
-	})
-	.done(function(data) {
-
-		//loop through the word list and eliminate redundant searches
-		var wordList = search.split(" ");
-		var searchTerms = [];
-		searchTerms.push(search);
-		console.log("success");
-		var keywords = data.keywords;
-		console.log(data)
-		keywords.filter(function(obj, index) {
-			var arr = obj.text.split(" ");
-			var match = false;
-			for(var i=0;i<wordList.length;i++) {
-				for(var j=0;j<arr.length;j++) {
-					debug(wordList[i].toLowerCase(), arr[j].toLowerCase());
-					if(wordList[i].toLowerCase() === arr[j].toLowerCase()) {
-						match = true;
-						debug(match)
+			//loop through the word list and eliminate redundant searches
+			var wordList = search.split(" ");
+			var searchTerms = [];
+			searchTerms.push(search);
+			console.log("success");
+			var keywords = data.keywords;
+			console.log(data)
+			keywords.filter(function(obj, index) {
+				var arr = obj.text.split(" ");
+				var match = false;
+				for(var i=0;i<wordList.length;i++) {
+					for(var j=0;j<arr.length;j++) {
+						debug(wordList[i].toLowerCase(), arr[j].toLowerCase());
+						if(wordList[i].toLowerCase() === arr[j].toLowerCase()) {
+							match = true;
+							debug(match)
+						}
 					}
 				}
-			}
-			if(!match) {
-				var wordsToAdd = obj.text.split(" ")
-				searchTerms.push(obj.text);
+				if(!match) {
+					var wordsToAdd = obj.text.split(" ")
+					searchTerms.push(obj.text);
 
-				for(var i=0;i<wordsToAdd.length;i++) {
-					wordList.push(wordsToAdd[i]);
+					for(var i=0;i<wordsToAdd.length;i++) {
+						wordList.push(wordsToAdd[i]);
+					}
+					debug(wordList);
 				}
-				debug(wordList);
-			}
-		})
-		console.log(searchTerms);
-
+			})
+			console.log(searchTerms);
+			$('#services .featurette-heading').html(searchTerms[1]);
+			$('#contact .featurette-heading').html(searchTerms[2]);
+			var newHTML = hideKeywords(pageHTML, searchTerms.slice(1));
+			 $('#about .lead').html(newHTML);
+		}).fail(function() {
+			console.log("error");
+		});
 	}).fail(function() {
 		console.log("error");
 	});
-
+	
 }
+
+function hideKeywords(html, keywords) {
+	for(var i=0;i<keywords.length;i++) {
+		var keyword = keywords[i];
+		html = html.replace(keyword, "<span class='keyword'>" + keyword + "</span>")
+	}
+	return html
+}
+
+$('body').on('click', '.keyword', function(event) {
+	console.log(event.target);
+	event.target.className = "";
+})
