@@ -4,7 +4,7 @@ var search = "";
 searchTerms =["Noble gas", "helium", "xenon", "argon", "monatomic gases", "krypton", "chemical"]
 
 function searchGIF() {
-	for(i = 0; i < 3; i++) {
+	for(i = 0; i < searchTerms.length; i++) {
 		search = searchTerms[i];
 		imageSearch(search);
 	}
