@@ -53,7 +53,10 @@ body {
 }
 
 .featurette-divider {
+  color: black;
+  background-color: black;
     margin: 80px 0;
+  height: 2px;
 }
 
 .featurette {
