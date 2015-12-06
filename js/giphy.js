@@ -1,7 +1,11 @@
 var search = "";
 // grace hopper example search terms:  searchTerms = ["Grace&Hopper", "United&States&Navy", "programming&languages", "New&York", "active&duty", "Defense&Distinguished&Service", "Naval&Support&Activity", "Government&Technology&Leadership"];
 //noble gases example search terms
-searchTerms =["Noble gas", "helium", "xenon", "argon", "monatomic gases", "krypton", "chemical"]
+	// searchTerms =["Noble gas", "helium", "xenon", "argon", "monatomic gases", "krypton", "chemical"]
+//Portland example search terms
+	searchTerms = ["Portland, Oregon", "Portland", "city", "United States", "Willamette River", "West Hills"]
+//Programming example search terms 
+	// searchTerms = []
 
 function searchGIF() {
 	for(i = 0; i < searchTerms.length; i++) {
@@ -57,5 +61,5 @@ function  imageSearch(search) {
 	});
 }
   
-
+//$(target).click(function(searchGIF()}));/
 searchGIF();
