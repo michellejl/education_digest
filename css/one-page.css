@@ -29,7 +29,7 @@ body {
  }
 
 .headline {
-    padding: 120px 0;
+    padding: 100px 0;
     border-top:bottom;
 }
 
@@ -38,19 +38,19 @@ body {
     background: #fff;
     background: rgba(255,255,255,0.9);
 
-    color: skyblue;
+    color: #3399CC;
     border: solid;
-    border-radius: 15px;
+    border-radius: 5px;
     border-color: #0b216d;
 }
 
 .headline h2 {
-    font-size: 30px;
+    font-size: 15px;
     background: #fff;
     background: rgba(255,255,255,0.9);
 
     border:solid;
-    border-radius: 15px;
+    border-radius: 10px;
 }
 
 .featurette-divider {
@@ -125,7 +125,7 @@ footer {
     }
 
     .headline h2 {
-        font-size: 50px;
+        font-size: 20px;
     }
 
     .featurette-divider {
