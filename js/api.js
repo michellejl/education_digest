@@ -182,6 +182,7 @@ function getImages(imageName) {
 
 function searchGIF(imageArray) {
 	console.log(imageArray)
+	$('#giffy').html(" ");
     var searchGiphy = "";
     for(i = 0; i < imageArray.length; i++) {
         searchGiphy = imageArray[i];
@@ -206,7 +207,7 @@ function  giffyImgSearch(searchGiphy) {
             if(jsonData.data[0]) {
 							gif = jsonData.data[0].images.fixed_height.url;
 	            console.log(gif, "THIS IS THE GIFURL")
-	            $('#giffy').html(" ");
+
 	            $('#giffy').append($('<img></img>').attr('src', gif));
             }
             

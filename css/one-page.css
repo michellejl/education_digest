@@ -239,3 +239,23 @@ input#search {
 #giffy img {
     max-width: 400px;
 }
+
+.ui-autocomplete {
+  background-color: #fff;
+  border:0;
+  color:#222;
+  list-style: none;
+  width: 194px;
+  padding: 0;
+}
+.ui-autocomplete {
+    padding:5px;
+}
+
+.ui-state-focus {
+    background-color: #bbb;
+}
+
+.ui-autocomplete ul li.ui-menu-item {
+    cursor:pointer;
+}
