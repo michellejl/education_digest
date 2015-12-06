@@ -202,7 +202,10 @@ footer {
 }
 
 .keyword {
-    color:white;
+    color:#eee;
     border: 1px solid red;
     cursor:pointer;
+}
+#giffy img {
+    max-width: 400px;
 }

@@ -69,10 +69,9 @@ function updatePage(search) {
 		})[0]
 		pageHTML = results.extract;
 		var images = results.images;
-
 		if(images) {
 			setTimeout(function() {
-				getImages(images[0].title);
+				getImages(images[3].title);
 		}, 200);
 
 
@@ -131,6 +130,11 @@ function updatePage(search) {
 			$('#contact .featurette-heading').html(searchTerms[2]);
 			var newHTML = hideKeywords(pageHTML, searchTerms.slice(1));
 			 $('#about .lead').html(newHTML);
+
+			searchGIF(searchTerms);
+
+
+
 		}).fail(function() {
 			console.log("error");
 		});
@@ -172,4 +176,48 @@ function getImages(imageName) {
 		var imageUrl = data.query.pages["-1"].imageinfo[0].url;
 		$('.featurette-image').attr('src', imageUrl);
 	});
+}
+
+//giphy code start here
+
+function searchGIF(imageArray) {
+	console.log(imageArray)
+    var searchGiphy = "";
+    for(i = 0; i < imageArray.length; i++) {
+        searchGiphy = imageArray[i];
+        giffyImgSearch(searchGiphy);
+    }
+}
+
+function  giffyImgSearch(searchGiphy) {
+      // testing invalid search += "grr";
+    var url = 'http://api.giphy.com/v1/stickers/search?q='+searchGiphy+'&api_key=dc6zaTOxFJmzC'
+
+    //ajax callback to access Giphy API
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        data: {limit: '1'},
+        success: function(jsonData) {
+            //getting first gif (data is part of array for search term- fixed height) and isolate image from data to display
+            console.log(jsonData.data[0]);
+            if(jsonData.data[0]) {
+							gif = jsonData.data[0].images.fixed_height.url;
+	            console.log(gif, "THIS IS THE GIFURL")
+	            $('#giffy').append($('<img></img>').attr('src', gif));
+            }
+            
+        }
+    })
+    .done(function() {
+        console.log("gif retrival success");
+        })
+    .fail(function() {
+        console.log("gif retrival error");
+    })
+    .always(function() {
+        console.log("gif retrival complete");
+    });
 }
