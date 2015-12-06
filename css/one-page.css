@@ -54,7 +54,10 @@ body {
 }
 
 .featurette-divider {
+  color: black;
+  background-color: black;
     margin: 80px 0;
+  height: 2px;
 }
 
 .featurette {
@@ -213,4 +216,17 @@ footer {
         margin-bottom: 10px;
         margin-left: 0;
     }
+}
+
+.keyword {
+    color:white;
+    border: 1px solid red;
+    cursor:pointer;
+}
+
+.search {
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+    border-radius: 5px;
 }
