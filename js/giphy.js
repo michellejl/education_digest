@@ -3,9 +3,10 @@ var search = "";
 //noble gases example search terms
 	// searchTerms =["Noble gas", "helium", "xenon", "argon", "monatomic gases", "krypton", "chemical"]
 //Portland example search terms
-	searchTerms = ["Portland, Oregon", "Portland", "city", "United States", "Willamette River", "West Hills"]
+	// searchTerms = ["Portland, Oregon", "Portland", "city", "United States", "Willamette River", "West Hills"]
 //Programming example search terms 
-	// searchTerms = []
+	searchTerms = ["Computer programming", "source code", "software development", "machine language", "different assembly languages", "final program takes.", "punched cards", "low-level hardware control", "data processing industry", "unit record"];
+
 
 function searchGIF() {
 	for(i = 0; i < searchTerms.length; i++) {
