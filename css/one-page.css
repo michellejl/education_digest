@@ -45,7 +45,7 @@ body {
 }
 
 .headline h2 {
-    font-size: 15px;
+    font-size: 20px;
     background: #fff;
     background: rgba(255,255,255,0.9);
 
@@ -229,7 +229,13 @@ footer {
     margin-top: 20px;
     text-align: center;
     border-radius: 5px;
-
+}
+input#search {
+  padding: 10px;
+}
+.tfbutton:hover {
+  color: white;
+}
 #giffy img {
     max-width: 400px;
 }
