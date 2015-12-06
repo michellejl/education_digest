@@ -19,22 +19,33 @@ body {
     background-size: cover;
     -o-background-size: cover;
 }
-.header-home{ background: url(../images/pencils.jpg); }
+.header-home{ 
+    background: url(../images/sky.jpg);
+
+
+ }
 
 .headline {
     padding: 120px 0;
+    border-top:bottom;
 }
 
 .headline h1 {
     font-size: 130px;
     background: #fff;
     background: rgba(255,255,255,0.9);
+    color:skyblue;
+    border:solid;
+    border-radius: 15px;
 }
 
 .headline h2 {
     font-size: 77px;
     background: #fff;
     background: rgba(255,255,255,0.9);
+
+    border:solid;
+    border-radius: 15px;
 }
 
 .featurette-divider {
@@ -118,8 +129,12 @@ footer {
 }
 
 @media(max-width:768px) {
-    .container {
+    .container 
+
+
+    {
         margin: 0 15px;
+        border: solid;
     }
 
     .featurette-divider {
