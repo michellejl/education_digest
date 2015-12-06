@@ -144,7 +144,12 @@ function hideKeywords(html, keywords) {
 	return html
 }
 
+<<<<<<< HEAD
 $('body').on('click', '.keyword', function(event) {
 	console.log(event.target);
 	event.target.className = "";
 })
+=======
+}
+
+>>>>>>> API-Team
