@@ -7,7 +7,6 @@ var search = "";
 //Programming example search terms 
 	searchTerms = ["Computer programming", "source code", "software development", "machine language", "different assembly languages", "final program takes.", "punched cards", "low-level hardware control", "data processing industry", "unit record"];
 
-
 function searchGIF() {
 	for(i = 0; i < searchTerms.length; i++) {
 		search = searchTerms[i];
