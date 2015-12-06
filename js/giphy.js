@@ -1,4 +1,4 @@
-var search = "";
+var searchGiphy = "";
 // grace hopper example search terms:  searchTerms = ["Grace&Hopper", "United&States&Navy", "programming&languages", "New&York", "active&duty", "Defense&Distinguished&Service", "Naval&Support&Activity", "Government&Technology&Leadership"];
 //noble gases example search terms
 	// searchTerms =["Noble gas", "helium", "xenon", "argon", "monatomic gases", "krypton", "chemical"]
@@ -9,14 +9,14 @@ var search = "";
 
 function searchGIF() {
 	for(i = 0; i < searchTerms.length; i++) {
-		search = searchTerms[i];
-		imageSearch(search);
+		searchGiphy = searchTerms[i];
+		imageSearch(searchGiphy);
 	}
 }
 
-function  imageSearch(search) {
+function  imageSearch(searchGiphy) {
 	  // testing invalid search += "grr";
-	var url = 'http://api.giphy.com/v1/stickers/search?q='+search+'&api_key=dc6zaTOxFJmzC'
+	var url = 'http://api.giphy.com/v1/stickers/search?q='+searchGiphy+'&api_key=dc6zaTOxFJmzC'
 
 	//ajax callback to access Giphy API
 
