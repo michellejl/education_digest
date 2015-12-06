@@ -55,30 +55,34 @@ function updatePage(search) {
 		data: {
 			action:'query',
 			titles:searchMod,
-			prop:'extracts',
+			prop:'extracts|images',
 			format:'json'
 		},
 	})
 	.done(function(data) {
 		console.log("success");
-
+		console.log(data.query);
 		//pulls the html from the search results and saves it as pageHTML and firstParagraph variables
 		var pages = data.query.pages
-		pageHTML = $.map(pages, function(value, index) {
+		var results = $.map(pages, function(value, index) {
 			return [value];
-		})[0].extract;
+		})[0]
+		pageHTML = results.extract;
+		var images = results.images;
+
+		if(images) {
+			setTimeout(function() {
+				getImages(images[0].title);
+		}, 200);
+
+
+		}
+
+		console.log(images)
 		var pageHTML = pageHTML.slice(0,pageHTML.indexOf('<h2>'));
-		console.log(pageHTML);
-		// var firstParagraph = pageHTML.slice(0,pageHTML.indexOf("</p>") + 4);
-		// htmlLeft = pageHTML.slice(pageHTML.indexOf("</p>") + 4);
-		// var secondParagraph = htmlLeft.slice(0,pageHTML.indexOf("</p>") + 4);
-		// htmlLeft = htmlLeft.slice(pageHTML.indexOf("</p>") + 4);
-		// var thirdParagraph = htmlLeft.slice(0,pageHTML.indexOf("</p>") + 4);
 		$('.headline .container h1').html(search);
 		$('#about .featurette-heading').html(search);
 		$('#about .lead').html(pageHTML);
-		// $('#services .lead').html(secondParagraph);
-		// $('#contact .lead').html(thirdParagraph);
 
 		// calls the keyword api to get a list of related keywords
 		$.ajax({
@@ -148,3 +152,24 @@ $('body').on('click', '.keyword', function(event) {
 	console.log(event.target);
 	event.target.className = "";
 })
+
+function getImages(imageName) {
+
+	$.ajax({
+		url: 'https://en.wikipedia.org/w/api.php',
+		type: 'GET',
+		dataType: 'jsonp',
+		data: {
+			action:'query',
+			titles:imageName,
+			prop:'imageinfo',
+			iiprop:'url',
+			format:'json'
+		},
+	})
+	.done(function(data) {
+		console.log(data.query.pages["-1"].imageinfo[0].url);
+		var imageUrl = data.query.pages["-1"].imageinfo[0].url;
+		$('.featurette-image').attr('src', imageUrl);
+	});
+}
