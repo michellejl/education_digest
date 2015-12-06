@@ -61,5 +61,5 @@ function  imageSearch(search) {
 	});
 }
   
-//$(target).click(function(searchGIF()}));/
+//$(#searchButton).click(function(searchGIF()}));/
 searchGIF();
