@@ -1,5 +1,9 @@
 # education_digest / rememsee
-A way to remember facts for learning using imagery (.gif)
+
+Site created as part of winter hackathon with HackPDX at Airbnb (December 2015)
+
+
+A way to remember facts for learning using imagery
 
 
 Future Features:
